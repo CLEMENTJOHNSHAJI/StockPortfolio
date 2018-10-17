@@ -1,7 +1,6 @@
 package fi.oulu.tol.sqat;
 
 import static org.junit.Assert.*;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.easymock.EasyMock;
@@ -17,13 +16,13 @@ public class PortfolioTest {
 		
 		//Mock create
 		nasdaq = EasyMock.createMock(StockMarket.class);
-		sqatPortfolio.setMarket(nasdaq);
+		sqatPortfolio.setMarket(nasdaq); //passing market object to portfolio
 	}
 
 	@Test //verifying external dependency
 	public void theTotalValueOfTheStocksAreReturnedAccordingToTheStockmarketPrice() {
 		//Mock set expectations
-		EasyMock.expect(nasdaq.getPrice("MS")).andReturn(25.50); //recording the expected behaviour but not working
+		EasyMock.expect(nasdaq.getPrice("MS")).andReturn(25.50); //recording the expected behaviour
 		EasyMock.expect(nasdaq.getPrice("N0")).andReturn(5.50);
 		//Mock ready
 		EasyMock.replay(nasdaq); //activating the expected behaviour
